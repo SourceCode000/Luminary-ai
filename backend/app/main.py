@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
 from app.core.exceptions import register_handlers
+from app.api.v1 import auth                          # ← add this
 
 settings = get_settings()
 
@@ -12,13 +13,14 @@ app = FastAPI(
     title="Luminary",
     description="Turn your documents into answers.",
     version="0.1.0",
+    swagger_ui_parameters={"persistAuthorization": True},
 )
 
 # ── Middleware ─────────────────────────────────────────────────────
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],        # we'll lock this down in production
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -29,10 +31,7 @@ register_handlers(app)
 
 # ── Routers ────────────────────────────────────────────────────────
 
-# we'll add these as we build each one
-# from app.api.v1 import auth, documents, chat, health
-# app.include_router(auth.router, prefix="/api/v1")
-
+app.include_router(auth.router, prefix="/api/v1")    # ← add this
 
 # ── Startup / Shutdown ─────────────────────────────────────────────
 

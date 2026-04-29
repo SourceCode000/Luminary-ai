@@ -9,3 +9,5 @@ email-validator
 sqlalchemy
 sqlalchemy[asyncio]
 asyncpg
+alembic
+psycopg2-binary
