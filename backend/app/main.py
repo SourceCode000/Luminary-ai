@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
-from app.api.v1 import auth, documents
+from app.api.v1 import auth, documents, chat
 from app.core.exceptions import register_handlers
 
 settings = get_settings()
@@ -32,7 +32,8 @@ register_handlers(app)
 # ── Routers ────────────────────────────────────────────────────────
 
 app.include_router(auth.router, prefix="/api/v1") 
-app.include_router(documents.router, prefix="/api/v1")   
+app.include_router(documents.router, prefix="/api/v1")  
+app.include_router(chat.router, prefix="/api/v1") 
 
 # ── Startup / Shutdown ─────────────────────────────────────────────
 
