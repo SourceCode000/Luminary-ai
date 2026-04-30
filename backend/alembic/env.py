@@ -2,7 +2,7 @@ from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy import engine_from_config
 from alembic import context
-
+from app.models.document import Document
 # import your models so Alembic can see them
 from app.models.base import Base
 from app.models.user import User

@@ -11,3 +11,7 @@ sqlalchemy[asyncio]
 asyncpg
 alembic
 psycopg2-binary
+pypdf
+python-docx
+langchain-text-splitters
+google-generativeai
