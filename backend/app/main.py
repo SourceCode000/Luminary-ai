@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
+from app.api.v1 import auth, documents
 from app.core.exceptions import register_handlers
-from app.api.v1 import auth                          # ← add this
 
 settings = get_settings()
 
@@ -31,7 +31,8 @@ register_handlers(app)
 
 # ── Routers ────────────────────────────────────────────────────────
 
-app.include_router(auth.router, prefix="/api/v1")    # ← add this
+app.include_router(auth.router, prefix="/api/v1") 
+app.include_router(documents.router, prefix="/api/v1")   
 
 # ── Startup / Shutdown ─────────────────────────────────────────────
 

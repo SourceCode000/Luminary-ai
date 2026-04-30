@@ -14,4 +14,7 @@ psycopg2-binary
 pypdf
 python-docx
 langchain-text-splitters
-google-generativeai
+google-genai
+openai
+python-multipart
+chromadb
